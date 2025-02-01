@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import loginImage from "../../assets/images/login-img.png";
 import bgImage from "../../assets/images/login-bg-image.png";
+import camera from "../../assets/images/camera.png";
 import { InputsBox } from "../../components/inputs";
 import { commonAllApi } from "../../server/Api";
 import { toast } from "react-toastify";
 import { isOk } from "../../utils/reusablefunctions";
+import { NavLink } from "react-router-dom";
 
 export default function Login() {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -24,7 +26,7 @@ export default function Login() {
   };
   const handleApiResponse = (response) => {
     if (isOk(response?.status)) {
-      if (isSignUp) {
+      if (!isSignUp) {
         localStorage.setItem("token_Flyweis", response?.data?.data?.token);
         setIsWelcome(true);
       } else {
@@ -80,7 +82,7 @@ export default function Login() {
     <section className="login-main-section">
       <img src={bgImage} className="bg-img-wave" alt="" />
       <div className="container text-center">
-        {isWelcome ? (
+        {!isWelcome ? (
           <div className="login-main-container">
             <div className="left-part">
               <img
@@ -202,22 +204,64 @@ export default function Login() {
           </div>
         ) : (
           <div className="welcome-container">
-            {setIsShowProfileDetails ? (
-              <div className="welcome-form-wrapper">
+            {isShowProfileDetails ? (
+              <div className="welcome-form-wrapper ">
+                <NavLink to="/dashboard" className="skip-btn">Skip </NavLink>
                 <input type="file" name="profile" id="profile" />
-                <h1>
-                  Welcome 123<br />
-                  <span> to the Free Shops App Admin Panel</span>
-                </h1>
-                <p>
-                  Manage and monitor all aspects of your app seamlessly from one
-                  place. Use the tools below to get started.
-                </p>
+                <label htmlFor="profile" className="profile-label">
+                  <img src={camera} alt="" className="icon-camera" />
+                </label>
+                <label htmlFor="profile" className="create-new-acc-text">
+                  Upload Profile Pitchers
+                </label>
+                <div className="form-group">
+                  <label htmlFor="userName">Your Name</label>
+                  <input
+                    type="text"
+                    name="userName"
+                    id="userName"
+                    required
+                    placeholder=""
+                    value={formData.userName}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="phone">Phone No</label>
+                  <input
+                    type="number"
+                    name="phone"
+                    id="phone"
+                    required
+                    placeholder=""
+                    value={formData.phone}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="email">Email</label>
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    required
+                    placeholder=""
+                    value={formData.email}
+                    onChange={handleChange}
+                  />
+                </div>
+
+                <InputsBox
+                  classes="form-group"
+                  label="Confirm Password"
+                  value={""}
+                  onChange={(value) => {}}
+                />
                 <button
                   className="primary-btn mx-auto"
-                  onClick={() => setIsShowProfileDetails(true)}
+                  onClick={() => {}}
                 >
-                  Get start
+                  Save
                 </button>
               </div>
             ) : (
@@ -235,7 +279,7 @@ export default function Login() {
                   className="primary-btn mx-auto"
                   onClick={() => setIsShowProfileDetails(true)}
                 >
-                  Get start
+                  Get start 
                 </button>
               </div>
             )}
