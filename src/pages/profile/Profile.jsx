@@ -19,11 +19,14 @@ export default function Profile() {
     password: '',  
     confirmNewPassword: '',
   });
+  const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [imageLoading, setImageLoading] = useState(false);
 
   const fetchProfileData = async () => {
+    setLoading(true)
     try {
       const res = await commonGetAuthApi('/v1/admin/getProfile');
-      console.log("Profile data:", res);
       if (isOk(res?.status)) {
         setFormData({
           userName: res?.data?.data?.fullName || '',
@@ -36,21 +39,38 @@ export default function Profile() {
     } catch (error) {
       console.error("Error fetching profile data:", error);
       toast.error("An error occurred while fetching your profile data.");
-    }
-  };
-  useEffect(()=>{
-   
-    fetchProfileData();
-  },[])
-  
-  const handleImageUpload = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      const imageUrl = URL.createObjectURL(file);
-      setProfileImage(imageUrl);
+    }finally{
+        setLoading(false);
     }
   };
 
+  useEffect(() => {
+    fetchProfileData();
+  }, []);
+
+  const validateForm = () => {
+    const newErrors = {};
+    if (!formData.userName?.trim()) newErrors.userName = 'Username is required';
+    if (!formData.email?.trim()) newErrors.email = 'Email is required';
+    if (!formData.phoneNumber?.trim()) newErrors.phoneNumber = 'Phone number is required';
+    if (!formData.oldPassword?.trim()) newErrors.oldPassword = 'Old password is required';
+    if (!formData.password?.trim()) newErrors.password = 'Password is required';
+    if (!formData.confirmNewPassword?.trim()) newErrors.confirmNewPassword = 'Confirm new password is required';
+    if (formData.password !== formData.confirmNewPassword) newErrors.confirmNewPassword = 'Passwords do not match';
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0; 
+  };
+
+  const handleImageUpload = async (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setImageLoading(true);
+      const imageUrl = URL.createObjectURL(file);
+      setProfileImage(imageUrl);
+      setImageLoading(false);
+    }
+  };
 
   const handleChange = (name, value) => {
     setFormData((prevData) => ({
@@ -59,15 +79,14 @@ export default function Profile() {
     }));
   };
 
- 
   const handleSubmit = async (event) => {
     event.preventDefault();
-  
-    if (formData.password !== formData.confirmNewPassword) {
-      toast.error("New passwords do not match!");
+    if (!validateForm()) {
+      Object.values(errors).forEach(error => toast.warn(error));
       return;
     }
-  
+
+    setLoading(true);
     const requestData = {
       fullName: formData.userName,
       firstName: formData.userName.split(" ")[0] || "",
@@ -77,11 +96,9 @@ export default function Profile() {
       oldPassword: formData.oldPassword,
       newPassword: formData.password,
     };
-  
+
     try {
       const res = await commonAllAuthApi('/v1/admin/update', requestData, 'put');
-      console.log("Profile update response:", res, requestData);
-      
       if (isOk(res?.status)) {
         toast.success("Profile updated successfully!");
       } else {
@@ -90,14 +107,17 @@ export default function Profile() {
     } catch (error) {
       console.error("Error updating profile:", error);
       toast.error("An error occurred while updating your profile.");
-    }finally{
-        setFormData({ ...formData,oldPassword:'',password:'',confirmNewPassword:''});
+    } finally {
+      setLoading(false);
+      setFormData({ ...formData, oldPassword: '', password: '', confirmNewPassword: '' });
     }
   };
 
   return (
     <section className='profile-main-section'>
       <img src={bgImage} alt="" className='bg-wave-image' />
+      {loading && <LoaderSpiner />}
+      
       <div className={`profile-frame`}>
         <div className={`sidenav-bar ${isShow ? 'show' : ''}`}>
           <SideNaveBar />
@@ -124,11 +144,10 @@ export default function Profile() {
                   onClick={() => document.getElementById('profileImage').click()}
                   type="button"
                 >
-                  Upload New Picture
+                  {imageLoading ? 'Uploading...' : 'Upload New Picture'}
                 </button>
               </div>
 
-            
               <div className="personal-information-frame">
                 <h2>Personal Information:</h2>
                 <div className="form-group">
@@ -141,6 +160,7 @@ export default function Profile() {
                     value={formData.userName}
                     onChange={(e) => handleChange("userName", e.target.value)}
                   />
+                  {errors.userName && <span className="error-message">{errors.userName}</span>}
                 </div>
                 <div className="form-group">
                   <label htmlFor="email">Email</label>
@@ -152,6 +172,7 @@ export default function Profile() {
                     value={formData.email}
                     onChange={(e) => handleChange("email", e.target.value)}
                   />
+                  {errors.email && <span className="error-message">{errors.email}</span>}
                 </div>
                 <div className="form-group">
                   <label htmlFor="phoneNumber">Phone Number</label>
@@ -163,10 +184,10 @@ export default function Profile() {
                     value={formData.phoneNumber}
                     onChange={(e) => handleChange("phoneNumber", e.target.value)}
                   />
+                  {errors.phoneNumber && <span className="error-message">{errors.phoneNumber}</span>}
                 </div>
               </div>
 
-           
               <div className="personal-information-frame pass-Management">
                 <h2>Password Management:</h2>
                 
@@ -175,6 +196,7 @@ export default function Profile() {
                   label="Old Password"
                   value={formData.oldPassword}
                   onChange={(value) => handleChange("oldPassword", value)}
+                  error={errors.oldPassword}
                 />
 
                 <InputsBox
@@ -182,6 +204,7 @@ export default function Profile() {
                   label="New Password"
                   value={formData.password}
                   onChange={(value) => handleChange("password", value)}
+                  error={errors.password}
                 />
 
                 <InputsBox
@@ -189,6 +212,7 @@ export default function Profile() {
                   label="Confirm New Password"
                   value={formData.confirmNewPassword}
                   onChange={(value) => handleChange("confirmNewPassword", value)}
+                  error={errors.confirmNewPassword}
                 />
               </div>
 
@@ -202,3 +226,11 @@ export default function Profile() {
     </section>
   );
 }
+
+const LoaderSpiner = () => {
+  return (
+    <div className="loader-wrapper">
+      <span className="loader"></span>
+    </div>
+  );
+};
