@@ -20,6 +20,10 @@ function App() {
             element: <Profile/>
         },
         {
+            path:'/*',
+            element:<ErrorPage/>
+        },
+        {
             path: "/dashboard",
             element: <Roots/>,
             errorElement:<ErrorPage/>,

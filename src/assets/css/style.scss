@@ -11,7 +11,13 @@
 }
 :root {
 	--sp: 2.5s; /* change speed */
-}		
+}	
+.erro_wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}	
 .container {
     max-width: 1440px;
     width: 100%;
