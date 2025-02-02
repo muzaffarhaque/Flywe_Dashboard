@@ -27,14 +27,15 @@ export default function Login() {
   const handleApiResponse = (response) => {
     if (isOk(response?.status)) {
       if (!isSignUp) {
-        localStorage.setItem("token_Flyweis", response?.data?.data?.token);
+        toast.success( "Login successfully");
+        localStorage.setItem("token_Flyweis", response?.data?.accessToken);
         setIsWelcome(true);
+
       } else {
         setIsSignUp(false);
+        toast.success( "Registered successfully" );
       }
-      toast.success(
-        isSignUp ? "Registered successfully" : "Login successfully"
-      );
+    
     } else {
       toast.error("Something went wrong!");
     }

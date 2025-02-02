@@ -1,6 +1,6 @@
 // common css start
 @import url( 'https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url( 'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 * {
     // font-family: 'Lato', sans-serif;
     font-family: "Montserrat", serif;
@@ -72,7 +72,7 @@
         opacity: 0.5;
     }
 }
-.outlate-wrapper{
+.outlate-wrapper {
     padding-top: 70px;
 }
 // ============== FONT SIZE ===========================
@@ -104,7 +104,7 @@
 // *=================== ALL PRODUCT PAGE START ---------------------------
 // 
 
-.text-center{
+.text-center {
     text-align: center;
 }
 .pagination-wrapper {
@@ -128,8 +128,151 @@
 // 
 // 
 // 
+
+// *=================== Root  PAGE START ---------------------------
+.outlet-root-main-section {
+    position: relative;
+    background-color: #EAEAEB;
+    z-index: 1;
+    .wave-be-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        object-fit: contain;
+        z-index: -1;
+    }
+    .outlet-root-wrapper {
+        display: flex;
+        padding: clamp(24px,3vw,50px);
+        max-width: 1500px;
+        margin: auto;
+        .root-nave-section {
+            width: 30%;
+            max-width: 294px;
+            min-width: 268px;
+        }
+        .root-content-body {
+            width: 100%;
+            padding: 0 19px;
+        }
+    }
+
+}
+.nav-bar {
+    width: 100%;
+    border-radius: 20px;
+    background-color: #FFFFFF;
+    overflow: hidden;
+    .logo-head {
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 36px;
+        color: #199FB1;
+        height: 65px;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid #D8D8D8;
+        justify-content: center;
+    }
+    ul {
+        li {
+            border-bottom: 1px solid #D8D8D8;
+            padding: 15px 10px;
+            text-align: center;
+            width: 100%;
+            a {
+                font-size: 20px;
+                font-weight: 600;
+                line-height: 30px;
+                color: #199FB1;
+                padding: 13px clamp(10px,2vw,20px);
+                text-decoration: none;
+                text-align: start;
+                display: block;
+                width: calc(100% - 0px);
+                border-radius: 20px;
+                margin: auto;
+                cursor: pointer;
+                
+                &:hover {
+                    background-color: #199FB1;
+                    color: white;
+                }
+
+            }
+            .active {
+                background-color: #199FB1;
+                color: white;
+            }
+        }
+    }
+}
+// *=================== Root  PAGE end ---------------------------
 // 
 // 
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 0;
+    gap: 10px;
+    border-bottom: 1px solid #FFFFFF;
+    .global-search-fields{
+        border-radius: 10px;
+        width: 40%;
+        max-width: 397px;
+        height: 45px;
+        display: flex;
+        align-items: stretch;
+        justify-content: center;
+        overflow: hidden;
+        input{
+            border: none;
+            outline: none;
+            padding: 10px 20px;
+            width: 100%;
+            color: white;
+            background-color: rgba(245, 245, 245,.2);
+            &::placeholder{
+                color: #7F7F7F;
+            }
+        }
+        span{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            background-color: #199FB1;
+            border-radius: 10px;
+            overflow: hidden;
+            width: 26%;
+            height: 100%;
+            min-width: 45px;
+            img{
+                width: 25px;
+            }
+        }
+    }
+    .profile-right-part{
+        display: flex;
+        align-items: center;
+        gap: clamp(10px,3vw,40px);
+        .bell-icon{
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+        .profile-img{
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            overflow: hidden;
+        }
+    }
+}
 // 
 // 
 // 

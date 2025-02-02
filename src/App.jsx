@@ -1,6 +1,6 @@
 
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
-import {Dashboard, Home, Login} from './pages';
+import {Dashboard, ErrorPage, Home, Login, Roots} from './pages';
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import './App.scss'
@@ -17,8 +17,16 @@ function App() {
         },
         {
             path: "/dashboard",
-            element: <Dashboard/>
-        }
+            element: <Roots/>,
+            errorElement:<ErrorPage/>,
+            children:[
+                {
+                    path: "/dashboard",
+                    element: <Dashboard/>
+                },
+            ]
+        },
+        
     ]);
     return (
     <> 
