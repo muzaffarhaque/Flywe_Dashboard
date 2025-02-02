@@ -2,6 +2,7 @@
 import {createBrowserRouter, Navigate, RouterProvider} from "react-router-dom";
 import {Category, Dashboard, ErrorPage, Home, Login, Profile, Roots} from './pages';
 import { ToastContainer } from 'react-toastify';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import "react-toastify/dist/ReactToastify.css";
 import './App.scss'
 import NotFound from "./components/NotFound";

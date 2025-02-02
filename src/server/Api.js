@@ -40,3 +40,11 @@ export const commonGetAuthApi = async (url) => {
         return error;
     }
 };
+export const commonDeleteAuthApi = async (url) => {
+    try {
+        const res = await postAxiosInstance?.delete(url);
+        return res;
+    } catch (error) {
+        return error;
+    }
+};
