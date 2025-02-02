@@ -129,20 +129,130 @@
 
 // ============ TABLE SECTION START ===================
 .main-table-section {
-
+    background-color: #ffffff;
+    margin: 10px 0;
+    border-radius: 20px;
     width: 100%;
-    .table-header{
+    .table-header {
         display: flex;
+        padding: 16px 40px;
         align-items: center;
         justify-content: space-between;
+        .text-heading-frame {
+            h4 {
+                font-size: 20px;
+                font-weight: 600;
+                line-height: 30px;
+                text-align: left;
+            }
+            .text-para {
+                font-size: 18px;
+                font-weight: 400;
+                line-height: 27px;
+                text-align: left;
+                color: #171717;
+
+            }
+        }
         .right-search-filter {
             display: flex;
             align-items: center;
             justify-content: end;
-            gap: 10px;
+            gap: 30px;
+            width: 50%;
+
+            .global-search-fields {
+                width: 100%;
+                max-width: 397px;
+                border-radius: 10px;
+                input {
+                    background-color: rgb(245, 245, 245);
+                    color: #000000;
+                }
+                span {
+                    color: #ffffff;
+                    font-size: 20px;
+                    font-weight: 600;
+                    line-height: 30px;
+                    padding: 10px 30px;
+                    width: auto;
+
+                }
+            }
         }
     }
- 
+    .table {
+        width: 100%;
+        thead {
+            tr {
+
+                th {
+
+                    padding: 13px;
+                    &:first-child {
+                        width: 15%;
+                    }
+                    &:nth-child(2) {
+                        text-align: start;
+                        padding-left: 25px;
+                    }
+                }
+            }
+        }
+        tbody {
+            tr {
+                &:nth-child(2) {
+                    td {
+                        border: none;
+                    }
+                }
+                td {
+                    border-top: 1px solid grey;
+                    text-align: center;
+                    padding: 13px;
+                    .user-name-wraper {
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+                        .profile {
+                            width: 45px;
+                            height: 45px;
+                            border-radius: 50%;
+                            overflow: hidden;
+                        }
+                        h6 {
+                            font-family: Poppins;
+                            font-size: 16px;
+                            font-weight: 600;
+                            line-height: 24px;
+                            text-align: left;
+
+                        }
+                    }
+                    .table-data-sub-head {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        padding: 1px 40px;
+                        p ,h5{
+                            font-family: Poppins;
+                            font-size: 14px;
+                            font-weight: 400;
+                            line-height: 21px;
+                            text-align: left;
+                            color: #7F7F7F;
+                           
+
+                        }
+                        h5{cursor: pointer;}
+                        
+                    }
+                }
+            }
+
+        }
+    }
+
 }
 // ============ TABLE SECTION END ===================
 @media (max-width:1300px) {

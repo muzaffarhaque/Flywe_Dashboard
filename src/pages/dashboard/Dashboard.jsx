@@ -45,7 +45,7 @@ export default function Dashboard() {
         </div>
       </div>
       <div className="">
-          <Table/>
+          <Table isSearch={true}  isFilter={true} title="" subTitle=""/>
       </div>
     </div>
   )
