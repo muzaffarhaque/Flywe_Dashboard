@@ -24,6 +24,7 @@
         align-items: center;
         justify-content: center;
         position: relative;
+        z-index: 1;
         background-color: #FFFFFF;
         &:first-child {
             border: 1px solid #ffffff;
@@ -48,6 +49,14 @@
             h1 {
                 color: #FF0838;
             }
+        }
+        .graph{
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            width: calc(100% - 20px);
+            height: calc(100% - 20px);
+            z-index: -1;
         }
         .title {
             position: absolute;

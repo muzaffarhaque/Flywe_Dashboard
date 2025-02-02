@@ -166,6 +166,12 @@
             width: 30%;
             max-width: 294px;
             min-width: 268px;
+            .nav-bar{
+                ul{
+                    list-style: none;
+                    padding-left: 0;
+                }
+            }
         }
         .root-content-body {
             width: 100%;
