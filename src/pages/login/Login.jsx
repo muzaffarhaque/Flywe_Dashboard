@@ -37,7 +37,7 @@ export default function Login() {
       }
     
     } else {
-      toast.error("Something went wrong!");
+      toast.error(response?.response?.data?.message || "Something went wrong!");
     }
   };
 
@@ -70,9 +70,7 @@ export default function Login() {
     try {
       const response = await commonAllApi(url, formData2, "post");
       handleApiResponse(response);
-    } catch (error) {
-      console.error("API Error:", error);
-      toast.error("Something went wrong!");
+    
     } finally {
       setLoading(false);
       resetForm();

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import postAxiosInstance, { preAxiosInstance } from './interseptor';
+import { toast } from 'react-toastify';
 
 const commonGetApi = async (url) => {
     try {
@@ -17,7 +18,8 @@ export const commonAllApi = async (url='',data='',method='get',obj={}) => {
         const res = await preAxiosInstance?.[method](url,data,obj);
         return res;
     } catch (error) {
-        return false;
+     
+        return error;
     }
 };
 
@@ -26,7 +28,7 @@ export const commonAllAuthApi = async (url='',data='',method='get',obj={}) => {
         const res = await postAxiosInstance?.[method](url,data,obj);
         return res;
     } catch (error) {
-        return false;
+        return error;
     }
 };
 
@@ -35,6 +37,6 @@ export const commonGetAuthApi = async (url) => {
         const res = await postAxiosInstance?.get(url);
         return res;
     } catch (error) {
-        return false;
+        return error;
     }
 };
