@@ -1,6 +1,7 @@
 import React from 'react'
 import Table from '../../components/Table'
 import LineChartCard from '../../components/LineChartCard'
+import BarChart from '../../components/BarChat'
 
 export default function Dashboard() {
   return (
@@ -50,7 +51,9 @@ export default function Dashboard() {
         </div>
         <div className="graph-bar-chat-wrapper">
           <h1>Company Growth</h1>
-          <div className="graph-bar-box"></div>
+          <div className="graph-bar-box">
+            <BarChart/>
+          </div>
           <div className="footer-month-frame">
             <button className='secondary-btn active'>Month</button>
             <button className='secondary-btn'>Year</button>
