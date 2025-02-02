@@ -86,15 +86,15 @@ export default function Category() {
                   <Dropdown className="custom-dropdown category-drop">
                     <Dropdown.Toggle id="dropdown-btn">...</Dropdown.Toggle>
                     <Dropdown.Menu>
-                      <div onClick={() => editHanlder()} className="edit">
+                      <Dropdown.Item href='' onClick={() => editHanlder()} className="edit">
                         Edit
-                      </div>
-                      <div
+                      </Dropdown.Item>
+                      <Dropdown.Item href=''
                         onClick={() => deleteHandler(item?.category?._id)}
                         className="delete"
                       >
                         Delete
-                      </div>
+                      </Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
                 </td>
