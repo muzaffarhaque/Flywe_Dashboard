@@ -330,7 +330,7 @@
         .profile-header {
             display: flex;
             align-items: center;
-            margin-bottom: 16px;
+            margin-bottom: 33px;
             .menu-icon {
                 width: 35px;
                 height: 35px;
@@ -348,7 +348,7 @@
         .profile-content {
             border-radius: 20px;
             background-color: #FFFFFF;
-            padding: 38px clamp(20px,5vw,100px);
+            padding: 68px clamp(20px,7vw,130px);
             height: calc(100% - 55px);
             width: 100%;
             .upload-profile-head {
@@ -363,7 +363,7 @@
                     border-radius: 50%;
 
                 }
-                #profileImage{
+                #profileImage {
                     // display: none;
                 }
                 .upload-profile-btn {
@@ -379,6 +379,25 @@
                     background-color: white;
 
                 }
+            }
+            .personal-information-frame {
+                h2 {
+                    margin: 30px 0;
+                    font-size: 24px;
+                    font-weight: 700;
+                    line-height: 36px;
+                }
+                .password-class,
+                .form-group {
+                    margin-bottom: 26px;
+                }
+            }
+            .pass-Management{
+                margin-top: clamp(45px,10vh,120px);
+            }
+            .save-button{
+                margin-top: clamp(65px,20vh,250px);
+                margin-bottom: clamp(45px,10vh,120px);
             }
         }
 

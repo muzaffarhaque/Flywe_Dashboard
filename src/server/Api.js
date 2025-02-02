@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { preAxiosInstance } from './interseptor';
+import postAxiosInstance, { preAxiosInstance } from './interseptor';
 
 const commonGetApi = async (url) => {
     try {
@@ -21,3 +21,20 @@ export const commonAllApi = async (url='',data='',method='get',obj={}) => {
     }
 };
 
+export const commonAllAuthApi = async (url='',data='',method='get',obj={}) => {
+    try {
+        const res = await postAxiosInstance?.[method](url,data,obj);
+        return res;
+    } catch (error) {
+        return false;
+    }
+};
+
+export const commonGetAuthApi = async (url) => {
+    try {
+        const res = await postAxiosInstance?.get(url);
+        return res;
+    } catch (error) {
+        return false;
+    }
+};
