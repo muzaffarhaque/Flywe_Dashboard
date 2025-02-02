@@ -222,7 +222,7 @@
     padding: 15px 0;
     gap: 10px;
     border-bottom: 1px solid #FFFFFF;
-  
+
     .profile-right-part {
         display: flex;
         align-items: center;
@@ -291,7 +291,101 @@
 }
 // 
 // 
-// 
+// ============ Profile css start ===============
+.profile-main-section {
+    position: relative;
+    z-index: 1;
+    padding: clamp(40px,5vw,120px) 0;
+    background-color: #EAEAEB;
+    .bg-wave-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        object-fit: contain;
+        z-index: -1;
+    }
+}
+.profile-frame {
+    display: flex;
+    align-items: stretch;
+    max-width: 1440px;
+    margin: auto;
+    gap: 17px;
+    .sidenav-bar {
+        width: 0;
+
+        transition: all 0.2s;
+    }
+    .sidenav-bar.show {
+        width: 30%;
+        max-width: 294px;
+        min-width: 268px;
+        transition: all 0.2s;
+
+    }
+    .profile-body {
+        width: 100%;
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+            .menu-icon {
+                width: 35px;
+                height: 35px;
+                cursor: pointer;
+                margin-right: 30px;
+            }
+            h3 {
+                font-size: 34px;
+                font-weight: 700;
+                line-height: 38px;
+                text-align: left;
+                color: white;
+            }
+        }
+        .profile-content {
+            border-radius: 20px;
+            background-color: #FFFFFF;
+            padding: 38px clamp(20px,5vw,100px);
+            height: calc(100% - 55px);
+            width: 100%;
+            .upload-profile-head {
+                display: flex;
+                align-items: center;
+                justify-content: start;
+                gap: 20px;
+                .upload-profile-img {
+                    width: 189px;
+                    height: 189px;
+                    object-fit: cover;
+                    border-radius: 50%;
+
+                }
+                #profileImage{
+                    // display: none;
+                }
+                .upload-profile-btn {
+                    outline: none;
+                    border: 1px solid #199FB1;
+                    padding: 8px 20px;
+                    font-size: 24px;
+                    font-weight: 500;
+                    line-height: 26px;
+                    color: #199FB1;
+                    cursor: pointer;
+                    border-radius: 10px;
+                    background-color: white;
+
+                }
+            }
+        }
+
+    }
+
+}
+// ============ Profile css end ===============
 // 
 // 
 // 

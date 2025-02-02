@@ -1,6 +1,6 @@
 
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
-import {Dashboard, ErrorPage, Home, Login, Roots} from './pages';
+import {Dashboard, ErrorPage, Home, Login, Profile, Roots} from './pages';
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import './App.scss'
@@ -14,6 +14,10 @@ function App() {
         {
             path: "/login",
             element: <Login/>
+        },
+        {
+            path: "/profile",
+            element: <Profile/>
         },
         {
             path: "/dashboard",
