@@ -1,0 +1,163 @@
+.dashboard-root-wrapper {}
+
+.dash-graph-wrapper {
+    display: flex;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: clamp(10px,2vw,35px);
+
+}
+.graph-box-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 55%;
+    max-width: 604px;
+    gap: 16px;
+    .graph-box {
+        max-width: 289px;
+        width: 48%;
+        height: 189px;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        background-color: #FFFFFF;
+        &:first-child {
+            border: 1px solid #ffffff;
+            h1 {
+                color: #199FB1;
+            }
+        }
+        &:nth-child(2) {
+            border: 1px solid #0FD43E;
+            h1 {
+                color: #0FD43E;
+            }
+        }
+        &:nth-child(3) {
+            border: 1px solid #FFCC40;
+            h1 {
+                color: #FFCC40;
+            }
+        }
+        &:nth-child(4) {
+            border: 1px solid #FF0838;
+            h1 {
+                color: #FF0838;
+            }
+        }
+        .title {
+            position: absolute;
+            left: 10px;
+            top: 8px;
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 30px;
+            color: #1E1E1E;
+        }
+        .view-all {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 24px;
+            text-align: left;
+            color: #000000;
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+        }
+    }
+    .earning-graph-box {
+        width: 100%;
+        max-width: 100%;
+        height: 127px;
+        align-items: flex-end;
+        .title {
+            color: #1E1E1E;
+        }
+        h1 {
+            color: #000000;
+            padding-bottom: 24px;
+        }
+
+    }
+}
+.graph-bar-chat-wrapper {
+    border-radius: 20px;
+    width: 42%;
+    max-width: 501px;
+    background-color: #ffffff;
+    h1 {
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 30px;
+        text-align: left;
+        padding: 10px 20px;
+    }
+    .graph-bar-box {
+        width: 100%;
+        height: 100%;
+        max-height: 400px;
+    }
+    .footer-month-frame {
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        button {
+            white-space: nowrap;
+        }
+    }
+
+}
+.secondary-btn {
+    border: 1px solid #199FB1;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 30px;
+    padding: 11px 3%;
+    outline: none;
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+.secondary-btn.active {
+    background-color: #199FB1;
+    color: #ffffff;
+}
+
+// ============ TABLE SECTION START ===================
+.main-table-section {
+
+    width: 100%;
+    .table-header{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .right-search-filter {
+            display: flex;
+            align-items: center;
+            justify-content: end;
+            gap: 10px;
+        }
+    }
+ 
+}
+// ============ TABLE SECTION END ===================
+@media (max-width:1300px) {
+    .graph-bar-chat-wrapper,
+    .graph-box-wrapper {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+@media (max-width:900px) {
+    .graph-bar-chat-wrapper,
+    .graph-box-wrapper {
+        max-width: 100%;
+    }
+    .graph-box {
+        width: 100%;
+    }
+}
