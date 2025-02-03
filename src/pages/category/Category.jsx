@@ -36,6 +36,7 @@ export default function Category() {
     };
 
     useEffect(() => {
+        scrollTo(0,0)
         getALlCategory();
     }, []);
 
@@ -61,6 +62,7 @@ export default function Category() {
         try {
             const res = await commonAllAuthApi("/v1/admin/Category/addCategory", formdata1,'post');
             if (isOk(res.status)) {
+                scrollTo(0,0)
                 toast.success("Category added successfully.");
                 setFormData({ CategoryName: "", CategoryDescription: "", ParentCategory: "" });
                 getALlCategory();
@@ -85,6 +87,7 @@ export default function Category() {
     try {
         const res = await commonAllAuthApi(`/v1/admin/Category/updateCategory/${selectedCategory}`, formdata2,'put');
         if (isOk(res.status)) {
+            scrollTo(0,0)
             toast.success("Category updated successfully.");
             setFormData({ CategoryName: "", CategoryDescription: "", ParentCategory: "" });
             setEditMode(false);
