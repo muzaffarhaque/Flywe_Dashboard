@@ -166,8 +166,8 @@
             width: 30%;
             max-width: 294px;
             min-width: 268px;
-            .nav-bar{
-                ul{
+            .nav-bar {
+                ul {
                     list-style: none;
                     padding-left: 0;
                 }
@@ -505,6 +505,12 @@
     }
 
 }
+.table-loader {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    background-color: rgb(255, 255, 255);
+}
 // ============ Profile css end ===============
 // 
 // 
@@ -542,10 +548,11 @@
     }
     .table {
         width: 100%;
+        min-height: 500px;
         margin-top: 20px;
-        thead{
-            tr{
-                th{
+        thead {
+            tr {
+                th {
                     padding: 10px;
                     &:first-child {
                         text-align: center;
@@ -573,8 +580,8 @@
 
 }
 .custom-dropdown {
-    #dropdown-btn,
-    #dropdown-basic {
+    #dropdown-basic,
+    #dropdown-btn {
         border: none;
         outline: none;
         background-color: transparent !important;
@@ -590,21 +597,21 @@
     }
 
 }
-.category-drop{
-    #dropdown-btn{
+.category-drop {
+    #dropdown-btn {
         font-size: 40px;
         color: #199FB1;
-        &::after{
+        &::after {
             display: none;
         }
     }
-    .dropdown-menu{
+    .dropdown-menu {
         max-width: 133px;
         padding: 10px;
         background: #D9D9D9;
         .delete,
-        .edit{
-           
+        .edit {
+
             background-color: transparent;
             padding: 10px 20px;
             width: 100%;
@@ -614,18 +621,65 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            &:hover{
+            &:hover {
                 background-color: #199FB1;
                 color: white;
             }
 
         }
-        .delete{
+        .delete {
             background-color: transparent;
             color: red;
             margin-top: 3px;
         }
-    }       
+    }
+
+}
+
+.add-category-wrapper {
+    padding: 35px 25px;
+    h1 {
+        font-family: Poppins;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 30px;
+        margin-bottom: 37px;
+    }
+    .form-group {
+        margin-bottom: 37px;
+        #CategoryDescription{
+            height: 120px;
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #7F7F7F;
+            &::placeholder{
+                color: #7F7F7F;
+            }
+        
+        }
+        input{
+            &::placeholder{
+                color: #7F7F7F;
+            }
+        }
+    }
+    .custom-dropdown{
+        #dropdown-basic{
+            border: 1px solid #7F7F7F;
+            width: 100%;
+            max-width: 500px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 4px 16px;
+            border-radius: 14px;
+        }
+    }
+    .btn-wrapper{
+        padding: 40px 0;
+    }
     
 }
 // =================== Category page css end  =====================

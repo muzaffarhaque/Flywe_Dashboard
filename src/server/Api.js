@@ -48,3 +48,11 @@ export const commonDeleteAuthApi = async (url) => {
         return error;
     }
 };
+export const commonPutAuthApi = async (url,data) => {
+    try {
+        const res = await postAxiosInstance?.put(url,data);
+        return res;
+    } catch (error) {
+        return error;
+    }
+};
